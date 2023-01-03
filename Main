@@ -1,0 +1,763 @@
+/* 
+This is a complex number calculator, which means that it does things with complex numbers. It can add, subtract, multiply, divide, and do many other operations with complex numbers.
+*/
+import java.util.Scanner;
+
+class Main {
+	private static double customLog(double base, double logNumber) {
+    return Math.log(logNumber) / Math.log(base);
+} // logarithm
+	public static void bell(String otherText) {
+		char bell = 0x7;
+		System.out.println(otherText + bell);
+	} // function that makes a sound (bell)
+	
+	public static void imagPrint(double real, double imag) {
+		double degreesDecimal = Math.atan(imag/real) * (180/Math.PI);		
+		if (real != 0 && real != Double.POSITIVE_INFINITY && real != Double.NEGATIVE_INFINITY) {
+			if (imag > 0 && imag != 1 && imag != Double.POSITIVE_INFINITY && imag != Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): " + real + " + " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 1) {
+				System.out.println("ANSWER (standard): " + real + " + " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 0) {
+				System.out.println("ANSWER (standard): " + real);
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == -1) {
+				System.out.println("ANSWER (standard): " + real + " - " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.POSITIVE_INFINITY) {
+				System.out.println("ANSWER (standard): " + real + " + Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): " + real + " - Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else {
+				System.out.println("ANSWER (standard): " + real + " - " + Math.abs(imag) + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			}
+		} else if (real == 0) {
+			if (imag > 0 && imag != 1 && imag != Double.POSITIVE_INFINITY && imag != Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 1) {
+				System.out.println("ANSWER (standard): " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");				
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 0) {
+				System.out.println("ANSWER (standard): 0");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == -1) {
+				System.out.println("ANSWER (standard): " + " - " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.POSITIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Negative Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else {
+				System.out.println("ANSWER (standard): " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			}
+		} else if (real == Double.POSITIVE_INFINITY) {
+			if (imag > 0 && imag != 1 && imag != Double.POSITIVE_INFINITY && imag != Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Infinity " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 1) {
+				System.out.println("ANSWER (standard): Infinity " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 0) {
+				System.out.println("ANSWER (standard): Infinity");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == -1) {
+				System.out.println("ANSWER (standard): Infinity " + " - " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.POSITIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Infinity + Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Infinity - Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else {
+				System.out.println("ANSWER (standard): Infinity " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			}
+		} else {
+			if (imag > 0 && imag != 1 && imag != Double.POSITIVE_INFINITY && imag != Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Negative Infinity " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 1) {
+				System.out.println("ANSWER (standard): Negative Infinity " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == 0) {
+				System.out.println("ANSWER (standard): Negative Infinity");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == -1) {
+				System.out.println("ANSWER (standard): Negative Infinity " + " - " + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.POSITIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Negative Infinity + Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else if (imag == Double.NEGATIVE_INFINITY) {
+				System.out.println("ANSWER (standard): Negative Infinity - Infinity i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			} else {
+				System.out.println("ANSWER (standard): Negative Infinity " + imag + "i");
+				System.out.println("ANSWER (angle notation): " + Math.hypot(real,imag) + " ∠ " + degreesDecimal + "° ");
+				System.out.println("ANSWER (polar): " + Math.hypot(real,imag) + "(cos(" + Math.atan(imag/real) + ") + i sin(" + Math.atan(imag/real) + "))");
+			}
+		}
+	} // creating a function for printing out the answers
+
+	public static void main(String[] args) {
+		
+		// Starting the scan and initializing some variables		
+		Scanner scan = new Scanner(System.in);
+		int iteration;
+		
+		for (iteration = 0;;) {
+			
+			// Initializing some variables
+			double base = 0;
+			double real1 = 0;
+			double real2 = 0;
+			double imag1 = 0;
+			double imag2 = 0;
+			double realAns = 0;
+			double imagAns = 0;
+			
+			final double cosineSquared = (1 + Math.cos(2 * real1)) / 2;
+			final double coshSquared = (Math.cosh(2 * imag1) + 1) / 2;
+			final double sineSquared = 1 - cosineSquared;
+			final double sinhSquared = (Math.cosh(2 * imag1) - 1) / 2;
+
+			{
+				if (iteration == 0) {
+					System.out.println();
+					System.out.println("Welcome to our complex number calculator. Complex numbers have 2 parts, a real one and an imaginary one (based on the imaginary unit, i, or the square root of -1). Please note: You can also use negative numbers and decimals. ");
+					iteration++;
+				} // first welcome message
+				else {
+					System.out.println();
+					System.out.println("Welcome back! If you want to enter more calculations on our calculator, keep going. Otherwise, enter 3 and quit. Please note: You can also use negative numbers and decimals.");
+				} // other welcome message
+				System.out.println();
+				System.out.println("You have 3 options - you can use arithmetic operations on complex numbers (type 1), trignometric operations (type 2), or to quit (type 3).");
+			} // printing the prompts
+			int command;
+			while (true) {
+				try {
+					command = scan.nextInt();
+					break;
+				} catch (Exception e) {
+					bell("Please enter 1 of the following options: 1 (arithmetic operations), 2 (trignometric operations), or 3 (quit).");
+					scan.nextLine();
+				}
+			}
+
+			if (command == 1) {
+				System.out.println();
+				System.out.println("Do you want to: 'add' (1), 'subtract' (2), 'multiply' (3), 'divide' (4), 'absolute value (complex modulus)' (5), logarithms (6), or quit (7)?");
+				int commandArith;
+				while (true) {
+					try {
+						commandArith = scan.nextInt();
+						break;
+					} catch (Exception e) {
+						bell("Please enter 1 of the following options: 1 (add), 2 (subtract), 3 (multiply), 4 (divide), 5 (absolute value), 6 (exponents), or 7 (quit).");
+						scan.nextLine();
+					}
+				}
+				if (commandArith == 1) 
+				{
+					System.out.println("Real Part of First Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of First Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Real Part of Second Number: ");
+					while (true) {
+						try {
+							real2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Second Number: ");
+					while (true) {
+						try {
+							imag2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					
+					realAns = real1 + real2;
+					imagAns = imag1 + imag2;
+					imagPrint(realAns, imagAns);
+				} // adding complex numbers code
+				else if (commandArith == 2) 
+				{
+					System.out.println("Real Part of First Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of First Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Real Part of Second Number: ");
+					while (true) {
+						try {
+							real2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Second Number: ");
+					while (true) {
+						try {
+							imag2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+
+					realAns = real1 - real2;
+					imagAns = imag1 - imag2;
+
+					imagPrint(realAns, imagAns);
+				} // subtracting complex numbers code
+				else if (commandArith == 3) 
+				{
+					System.out.println("Real Part of First Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of First Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Real Part of Second Number: ");
+					while (true) {
+						try {
+							real2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Second Number: ");
+					while (true) {
+						try {
+							imag2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					if (real1 == 0 && real2 == 0) {
+						if (imag1 != 0 || imag2 != 0) {
+							realAns = -1 * imag1 * imag2;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						} else {
+							realAns = 0;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						}
+					} else if (real1 != 0 && real2 == 0) {
+						if (imag1 != 0 && imag2 != 0) {
+							realAns = -1 * (imag1 * imag2);
+							imagAns = real1 * imag2;
+							imagPrint(realAns, imagAns);
+						} else if (imag1 == 0 && imag2 != 0) {
+							realAns = 0;
+							imagAns = real1 * imag2;
+							imagPrint(realAns, imagAns);
+						} else {
+							realAns = 0;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						}
+					} else if (real1 == 0 && real2 != 0) {
+						if (imag1 != 0 && imag2 != 0) {
+							realAns = -1 * (imag1 * imag2);
+							imagAns = real2 * imag1;
+							imagPrint(realAns, imagAns);
+						} else if (imag1 != 0 && imag2 == 0) {
+							realAns = 0;
+							imagAns = real2 * imag1;
+							imagPrint(realAns, imagAns);
+						} else {
+							realAns = 0;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						}
+					} else {
+						realAns = real1 * real2 + -1 * (imag1 * imag2);
+						imagAns = real1 * imag2 + real2 * imag1;
+						imagPrint(realAns, imagAns);
+					}
+				} // multiplying complex numbers code
+				else if (commandArith == 4) 
+				{
+					System.out.println("Real Part of First Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of First Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Real Part of Second Number: ");
+					while (true) {
+						try {
+							real2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Second Number: ");
+					while (true) {
+						try {
+							imag2 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					if (real1 == 0 && real2 == 0) {
+						if (imag1 != 0 && imag2 != 0) {
+							realAns = imag1 / imag2;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						} else if (imag1 == 0 && imag2 != 0) {
+							realAns = 0;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						} else {
+							System.out.println("ANSWER: undefined");
+						}
+					} else if (real1 != 0 && real2 == 0) {
+						if (imag1 != 0 && imag2 != 0) {
+							realAns = imag1 / imag2;
+							imagAns = -1 * (real1 / imag2);
+							imagPrint(realAns, imagAns);
+						} else if (imag1 == 0 && imag2 != 0) {
+							realAns = 0;
+							imagAns = real1 / imag2;
+							imagPrint(realAns, imagAns);
+						} else {
+							System.out.println("ANSWER: undefined");
+						}
+					} else if (real1 == 0 && real2 != 0) {
+						if (imag1 != 0 && imag2 != 0) {
+							double denominator = (real2 * real2) + -1 * (imag2 * (-1 * imag2));
+							double realNumerator = -1 * (imag1 * (-1 * imag2));
+							double imagNumerator = imag1 * real2;
+							realAns = realNumerator / denominator;
+							imagAns = imagNumerator / denominator;
+							imagPrint(realAns, imagAns);
+						} else if (imag1 != 0 && imag2 == 0) {
+							realAns = 0;
+							imagAns = real2 / imag1;
+							imagPrint(realAns, imagAns);
+						} else if (imag1 == 0 && imag2 != 0) {
+							realAns = 0;
+							imagAns = 0;
+							imagPrint(realAns, imagAns);
+						} else {
+							System.out.println("ANSWER: undefined");
+						}
+					} else {
+						double denominator = (real2 * real2) + -1 * (imag2 * (-1 * imag2));
+						double realNumerator = real1 * real2 + -1 * (imag1 * (-1 * imag2));
+						double imagNumerator = (imag1 * real2) + (real1 * (-1 * imag2));
+						realAns = realNumerator / denominator;
+						imagAns = imagNumerator / denominator;
+						imagPrint(realAns, imagAns);
+					}
+				} // dividing complex numbers code
+				else if (commandArith == 5) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					realAns = Math.hypot(real1, imag1);
+					imagAns = 0;
+					imagPrint(realAns, imagAns);
+				} // absolute value code
+				else if (commandArith == 6)
+				{
+					System.out.println("Base (Real Only): ");
+					while (true) {
+						try {
+							base = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							bell("Please enter an integer.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Real Part of Complex Argument: ");
+					while (true) {
+						try {
+							real1 = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							bell("Please enter an integer.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Argument: ");
+					while (true) {
+						try {
+							imag1 = scan.nextInt();
+							break;
+						} catch (Exception e) {
+							bell("Please enter an integer.");
+							scan.nextLine();
+						}
+					}
+					realAns = customLog(base, Math.hypot(real1, imag1));
+					imagAns = Math.atan2(imag1, real1);
+					imagPrint(realAns, imagAns);
+				} // logarithm code
+				else if (commandArith == 7) 
+				{
+					System.out.println();
+					System.out.println("Thank you for visiting our calculator. We hope you had a great experience and will come back soon.");
+					break;
+				} // quit code
+				else {
+					System.out.println();
+					System.out.println("Please type a valid option. Add is 1, Subtract is 2, multiply is 3, divide is 4, absolute value is 5, and quit is 6.");
+					break;
+				}
+			} // arithmetic operations code - addition, subtraction, multiplication, division, and absolute value (modulus)
+			else if (command == 2) {
+				System.out.println();
+				System.out.println("Which trignometric operation do you want to use: 'sine' (1), 'cosine' (2), 'tangent' (3), secant (4), cosecant (5), cotangent (6), or do you want to quit (7)?");
+				int commandTrig;
+				while (true) {
+					try {
+						commandTrig = scan.nextInt();
+						break;
+					} catch (Exception e) {
+						bell("Please enter a valid option. Sine is 1, cosine is 2, tangent is 3, secant is 4, cosecant is 5, cotangent is 6, and quit is 7.");
+						scan.nextLine();
+					}
+				}
+				if (commandTrig == 1) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					realAns = Math.sin(real1) * Math.cosh(imag1);
+					imagAns = Math.cos(real1) * Math.sinh(imag1);
+					imagPrint(realAns, imagAns);
+				} // sine code
+				else if (commandTrig == 2) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					realAns = Math.cos(real1) * Math.cosh(imag1);
+					imagAns = -1 * (Math.sin(real1) * Math.sinh(imag1));
+					imagPrint(realAns, imagAns);
+				} // cosine code
+				else if (commandTrig == 3) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					if (real1 != 90 && imag1 == 0 || real1 != 90 && imag1 != 0) {
+						double realNumerator = Math.sin(2 * real1);
+						double imagNumerator = Math.sinh(2 * imag1);
+						double denominator = Math.cos(2 * real1) + Math.cosh(2 * imag1);
+						realAns = realNumerator / denominator;
+						imagAns = imagNumerator / denominator;
+						imagPrint(realAns, imagAns);
+					} else {
+						System.out.println("ANSWER: undefined");
+					}
+				} // tangent code
+				else if (commandTrig == 4) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					double realNumerator = Math.cos(real1) * Math.cosh(imag1);
+					double imagNumerator = Math.sin(real1) * Math.sinh(imag1);
+					double denominator = cosineSquared * coshSquared + sineSquared * sinhSquared;
+					realAns = realNumerator / denominator;
+					imagAns = imagNumerator / denominator;
+					imagPrint(realAns, imagAns);
+				} // secant code
+				else if (commandTrig == 5) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					double realNumerator = Math.sin(real1) * Math.cosh(imag1);
+					double imagNumerator = -1 * (Math.cos(real1) * Math.sinh(imag1));
+					double denominator = realNumerator * realNumerator + -1 * imagNumerator * (-1 * imagNumerator);
+					realAns = realNumerator / denominator;
+					imagAns = imagNumerator / denominator;
+					imagPrint(realAns, imagAns);
+				} // cosecant code
+				else if (commandTrig == 6) 
+				{
+					System.out.println("Real Part of Complex Number: ");
+					while (true) {
+						try {
+							real1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter a rational number.");
+							scan.nextLine();
+						}
+					}
+					System.out.println("Imag. Part of Complex Number: ");
+					while (true) {
+						try {
+							imag1 = scan.nextDouble();
+							break;
+						} catch (Exception e) {
+							bell("Please enter the numerical part of your imaginary number with no letters or symbols coming after it. Ex. Instead of 0.5i, write 0.5.");
+							scan.nextLine();
+						}
+					}
+					if (real1 != 0 && imag1 == 0 || real1 != 0 && imag1 != 0) {
+						double realNumerator = (Math.cos(2 * real1) + Math.cosh(2 * imag1)) * Math.sin(2 * real1);
+						double imagNumerator = (Math.cos(2 * real1) + Math.cosh(2 * imag1)) * (-1 * Math.sinh(2 * imag1));
+						double denominator = Math.sin(2 * real1) * Math.sin(2 * real1)
+								+ -1 * (Math.sinh(2 * imag1) * (-1 * Math.sinh(2 * imag1)));
+						realAns = realNumerator / denominator;
+						imagAns = imagNumerator / denominator;
+						imagPrint(realAns, imagAns);
+					} else {
+						System.out.println("ANSWER: undefined");
+					}
+				} // cotangent code
+				else if (commandTrig == 7) 
+				{	
+					System.out.println();
+					System.out.println("Thank you for visiting our calculator. We hope you had a great experience and visit us again sometime.");
+					break;
+				} // quit code
+				else {
+					System.out.println();
+					System.out.println("Please type a valid option. Sine is 1, Cosine is 2, tangent is 3, secant is 4, cosecant is 5, cotangent is 6, and quit is 7.");
+					break;
+				}
+			} // trignometric operations code - sine, cosine, tangent, secant, cosecant, and quit
+			else if (command == 3) {
+				System.out.println();
+				System.out.println("Thank you for using our calculator. I hope you had a good time. See you soon!");
+				break;
+			} // quit code
+			else {
+				System.out.println();
+				System.out.println("Please type a valid option. Arithmetic operations are 1, trignometric operations are 2, and quit is 3.");
+				break;
+			}
+		}
+		scan.close();
+	}
+}
